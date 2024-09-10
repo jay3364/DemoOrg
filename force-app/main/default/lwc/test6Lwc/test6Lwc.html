@@ -1,0 +1,35 @@
+<template>
+    <div>
+        <lightning-input
+            type="search"
+            name="enter-search"
+            label="Search when user hits the 'enter' key"
+            onchange={inputvalue}
+        ></lightning-input>
+        
+        <lightning-button 
+            variant="brand"
+            label="Search"
+            onclick={handleSearch}
+        ></lightning-button>
+
+        <template if:true={showDropdown}>
+            <div class="slds-box_border" style="width:100%">
+                <ul class="dropdown-list slds-dropdown_length-7 slds-p-left_medium">
+                    <template for:each={filteredResults} for:item="profile">
+                        <li key={profile.Id} class="dropdown-item">
+                            <lightning-input
+                                type="checkbox"
+                                checked={profile.isChecked}
+                                label={profile.Name}
+                                value={profile.Id}
+                                onchange={handleSelection}
+                            ></lightning-input>
+                            {profile.QualifiedApiName}
+                        </li>
+                    </template>
+                </ul>
+            </div>
+        </template>
+    </div>
+</template>

@@ -1,0 +1,75 @@
+<apex:page controller="VFLoginStudent">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        .login-container h1 {
+            margin-bottom: 20px;
+        }
+        .login-container input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .login-container button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .login-container button:hover {
+            background-color: #0056b3;
+        }
+        .links {
+            margin-top: 15px;
+        }
+        .links a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <apex:form >
+        <div class="login-container">
+            <h1>Login</h1>
+            <div>
+                <label for="username">Username</label><br />
+                <apex:inputText id="username" value="{!userName}" style="width: 100%;"></apex:inputText>
+            </div>
+            <div>
+                <label for="password">Password</label><br />
+                <apex:inputSecret id="password" value="{!password}" style="width: 100%;"></apex:inputSecret>
+            </div>
+            <div>
+                <apex:commandButton value="Login" action="{!login}" />
+            </div>
+        </div>
+        <div class="links">
+            <p><a href="/apex/Forgot_Password">Forgot Password?</a></p>
+            <p><a href="/apex/Registration_Page">Register</a></p>
+        </div>
+        <apex:messages />
+    </apex:form>
+</apex:page>

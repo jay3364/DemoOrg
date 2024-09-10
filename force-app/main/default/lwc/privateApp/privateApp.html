@@ -1,0 +1,76 @@
+<template>
+    <lightning-card variant="base">
+        <ul class="slds-accordion">
+            <li class="slds-accordion__list-item">
+                <section class="slds-accordion__section slds-is-open">
+                    <div class="slds-accordion__summary">
+                        <h2 class="slds-accordion__summary-heading">
+                            <button class="slds-button slds-button_reset slds-accordion__summary-action"
+                                style="background-color: rgb(77, 82, 77); color: white;" aria-controls="referenceId-42"
+                                aria-expanded="false" title="Accordion summary" onclick={toggleSection}>
+                                <lightning-icon icon-name="utility:switch" alternative-text="Switch"
+                                    size="x-small"></lightning-icon>
+                                <span class="slds-accordion__summary-content">Carrer Pages</span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div class="slds-accordion__content" id="accordionSection">
+
+                        <lightning-datatable key-field="id" data={companies} columns={columns}
+                             onsave={handleSave}  draft-values={draftValues} enable-infinite-loading
+                            onrowaction={handleRowAction}>
+                        </lightning-datatable>
+
+
+                    </div>
+                </section>
+            </li>
+            <li class="slds-accordion__list-item">
+                <section class="slds-accordion__section">
+                    <div class="slds-accordion__summary">
+                        <h2 class="slds-accordion__summary-heading">
+                            <button class="slds-button slds-button_reset slds-accordion__summary-action" style="background-color: lightcoral ;color: black;"
+                                aria-controls="referenceId-43" aria-expanded="false" title="Accordion summary"
+                                onclick={toggleSection}>
+                                <lightning-icon icon-name="utility:switch" alternative-text="Switch"
+                                    size="x-small"></lightning-icon>
+                                <span class="slds-accordion__summary-content">Carrer Pages</span>
+                            </button>
+                        </h2>
+                    </div>
+                    <!-- <div hidden class="slds-accordion__content" id="referenceId-43">Accordion details - B</div> -->
+                    <div class="slds-accordion__content" >
+                        <lightning-record-picker
+                            object-api-name="Contact"
+                            label="Contacts"
+                            onchange={handlesuccess}>
+                        </lightning-record-picker>
+                
+                        <template if:true={selectedRecord}>
+                            <p>Account Name: {selectedRecord.Name}</p>
+                            <p>Industry: {selectedRecord.Industry}</p>
+                            <p>Phone: {selectedRecord.Phone}</p>
+                            <p>Annual Revenue: {selectedRecord.AnnualRevenue}</p>
+                        </template>
+                    </div>
+                </section>
+            </li>
+            <li class="slds-accordion__list-item">
+                <section class="slds-accordion__section">
+                    <div class="slds-accordion__summary">
+                        <h2 class="slds-accordion__summary-heading">
+                            <button class="slds-button slds-button_reset slds-accordion__summary-action"
+                                aria-controls="referenceId-44" aria-expanded="false" title="Accordion summary"
+                                onclick={toggleSection}>
+                                <lightning-icon icon-name="utility:switch" alternative-text="Switch"
+                                    size="x-small"></lightning-icon>
+                                <span class="slds-accordion__summary-content">Accordion summary</span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div hidden class="slds-accordion__content" id="referenceId-44">Accordion details - C</div>
+                </section>
+            </li>
+        </ul>
+    </lightning-card>
+</template>

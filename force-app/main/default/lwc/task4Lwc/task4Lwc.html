@@ -1,0 +1,17 @@
+<template>
+    <lightning-card variant="Narrow" title="Hello" icon-name="standard:account">
+        <template if:true={accountOptions}>
+            <lightning-combobox
+                name="accounts"
+                label="Select Account"
+                value={selectedAccountId}
+                placeholder="Select an Account"
+                options={accountOptions}
+                onchange={handleAccountChange}>
+            </lightning-combobox>
+        </template>
+        <template if:true={selectedAccount}>
+            <strong>Account Name:</strong> {selectedAccount.label}
+        </template>
+    </lightning-card>
+</template>

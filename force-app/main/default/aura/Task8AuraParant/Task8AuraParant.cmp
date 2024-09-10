@@ -1,0 +1,19 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global">
+    <aura:attribute name="uploadedImage" type="String"/>
+
+    <c:ChildFileUploader/>
+
+    <aura:handler name="sampleComponentEvent" event="c:childEvent" action="{!c.handleComponentEvent}"/>
+
+    <aura:if isTrue="{!not(empty(v.uploadedImage))}">
+        <img src="{!v.uploadedImage}" alt="Uploaded Image" width="200"/>
+    </aura:if>
+
+    <!-- <aura:attribute name="enteredValue" type="String" />
+    
+    <c:ChildFileUploader/><br /><br />
+    <div class="slds-box slds-p-around_medium">
+        <h2>This is Parent Component</h2>
+        value entered on child component input Box: <b>{!v.enteredValue}</b>
+    </div> -->
+</aura:component>

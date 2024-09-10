@@ -1,0 +1,45 @@
+<template>
+    <lightning-tabset>
+        
+        <lightning-tab label="My Profile">
+            <lightning-record-view-form record-id={teacherId} object-api-name="Teacher__c">
+                <div class="slds-box slds-theme_default">
+                    <lightning-output-field field-name="Name" data-id="name"></lightning-output-field>
+                    <lightning-output-field field-name="Email__c" data-id="email"></lightning-output-field>
+                    
+                </div>
+            </lightning-record-view-form>
+            <lightning-button label="Edit" onclick={handleEdit}></lightning-button>
+        </lightning-tab>
+        
+        
+        <lightning-tab label="Students">
+            <template if:true={students}>
+                <template for:each={students} for:item="student">
+                    <div key={student.Id} class="slds-box slds-theme_default slds-m-around_small">
+                        <p>{student.Name}</p>
+                        
+                        <div class="star-rating">
+                           
+                            <template for:each={stars} for:item="star">
+                                <img key={star} src={starIcon}  data-id={student.Id} data-rating={star} onclick={handleRating} alt="Star" />
+                            </template>
+                        </div>
+                    </div>
+                </template>
+            </template>
+        </lightning-tab>
+    </lightning-tabset>
+
+    <template if:true={isEditing}>
+        <lightning-record-edit-form record-id={teacherId} object-api-name="Teacher__c">
+            <div class="slds-box slds-theme_default">
+                <lightning-input-field field-name="Name"></lightning-input-field>
+                <lightning-input-field field-name="Email__c"></lightning-input-field>
+                <!-- Add more fields as needed -->
+            </div>
+            <lightning-button label="Save" onclick={handleSave}></lightning-button>
+            <lightning-button label="Cancel" onclick={handleCancel}></lightning-button>
+        </lightning-record-edit-form>
+    </template>
+</template>

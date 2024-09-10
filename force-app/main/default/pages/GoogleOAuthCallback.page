@@ -1,0 +1,18 @@
+<apex:page controller="GoogleOAuthController">
+<!-- Begin Default Content REMOVE THIS -->
+<apex:pageMessages />
+    <apex:outputText value="Authorization code received. You can close this window." />
+    <apex:form >
+    <apex:actionFunction name="init" action="{!captureAuthCode}" rerender="messages"/>
+        </apex:form>
+    <script>
+        // Call the init function when the page loads
+        window.onload = function() {
+            init();
+        };
+    </script>
+    
+    <apex:form >
+        <apex:commandButton value="Connect to Google" action="{!redirectToGoogle}" />
+    </apex:form>
+</apex:page>

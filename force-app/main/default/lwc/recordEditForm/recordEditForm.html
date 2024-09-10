@@ -1,0 +1,50 @@
+<template>
+
+    <h1>Unique Quadruplets that sum up to {target}</h1>
+    <lightning-button label="Bold" onclick={makeBold}></lightning-button>
+    <div contenteditable="true" class="editable-content">
+        <p>Select some text and click the "Bold" button to make it bold.</p>
+        <p>You can try selecting this text.</p>
+    </div>
+thus us record edit form
+   
+        hello
+        <lightning-record-picker
+        label="Accounts"
+        placeholder="Search Accounts..."
+        object-api-name="Account"
+    >
+    </lightning-record-picker>
+
+
+<!-- 
+    
+    <lightning-record-edit-form record-id={recordId} object-api-name="Account" onsuccess={handleSuccess}
+        onsubmit={handleSubmit}>
+        <template if:true={isspinner}>
+            <div>
+                <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+                thtis Loading
+                <lightning-output-field field-name="Name" ></lightning-output-field>
+
+        <lightning-input-field field-name="Name">
+        </lightning-input-field>
+
+        <lightning-input-field field-name="Email">
+        </lightning-input-field>
+        <lightning-button class="slds-m-top_small" variant="brand" type="submit" name="update" label="Update">
+        </lightning-button> 
+            </div>
+        </template>
+       
+        
+    </lightning-record-edit-form> -->
+
+<!-- <lightning-datatable
+  key-field="id"
+  data={data}
+  columns={columns}
+></lightning-datatable> -->
+
+    
+</template>

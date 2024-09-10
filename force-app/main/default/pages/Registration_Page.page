@@ -1,0 +1,130 @@
+<apex:page controller="VFRegistration">
+ <apex:includeLightning />    
+<div id="LwcId" />
+<script>
+        $Lightning.use("c:Task2AuraApp", function() {
+        $Lightning.createComponent("c:privateApp",
+        {
+            note   : 'I am coming from VF Page', // You can pass the value to @api attributes if you have inside JavaScript Class.
+            recordId : '{!$CurrentPage.parameters.id}'
+        },
+        "LwcId", // the Id of div tag where your component will be rendered
+        function(cmp) {
+            console.log('Calling the LWC Component');
+        });
+    });
+</script>
+   
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .registration-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 400px;
+        }
+        .registration-container h1 {
+            margin-bottom: 20px;
+        }
+        .registration-container input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .registration-container button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .registration-container button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <apex:form id="registrationForm">
+        <div class="registration-container">
+            <h1>Register</h1>
+            <div>
+                <label for="firstName">First Name</label><br />
+                <apex:inputText id="firstName" value="{!firstName}" style="width: 100%;"></apex:inputText>
+            </div>
+            <div>
+                <label for="lastName">Last Name</label><br />
+                <apex:inputText id="lastName" value="{!lastName}" style="width: 100%;"></apex:inputText>
+            </div>
+            <div>
+                <label for="email">Email</label><br />
+                <apex:inputText id="email" value="{!email}" style="width: 100%;"></apex:inputText>
+            </div>
+            <div>
+                <label for="password">Password</label><br />
+                <apex:inputSecret id="password" value="{!password}" style="width: 100%;"></apex:inputSecret>
+            </div>
+            <div>
+                <label for="confirmPassword">Confirm Password</label><br />
+                <apex:inputSecret id="confirmPassword" style="width: 100%;"></apex:inputSecret>
+            </div>
+            <div>
+                <button type="button" onclick="register()">Register</button>
+            </div>
+        </div>
+    </apex:form>
+    <script>
+        function validateForm() {
+            var password = document.getElementById('{!$Component.registrationForm.password}').value;
+            var confirmPassword = document.getElementById('{!$Component.registrationForm.confirmPassword}').value;
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
+                return false;
+            }
+            return true;
+        }
+
+        function register() {
+            if (validateForm()) {
+                saveData();
+            }
+        }
+
+        function saveData() {
+            var firstName = document.getElementById('{!$Component.registrationForm.firstName}').value;
+            var lastName = document.getElementById('{!$Component.registrationForm.lastName}').value;
+            var email = document.getElementById('{!$Component.registrationForm.email}').value;
+            var password = document.getElementById('{!$Component.registrationForm.password}').value;
+
+            console.log('Registering: ', firstName, lastName, email, password); // Debugging
+
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.VFRegistration.saveStudent}',
+                firstName,
+                lastName,
+                email,
+                password,
+                function(result, event) {
+                    if (event.status) {
+                        alert('Student registered successfully!');
+                    } else {
+                        alert('Error: ' + event.message);
+                    }
+                }
+            );
+        }
+    </script>
+</apex:page>

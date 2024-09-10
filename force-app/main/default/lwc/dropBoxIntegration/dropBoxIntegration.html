@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title="Dropbox Integration" icon-name="custom:custom63">
+        <div class="slds-var-m-around_medium">
+            <lightning-input type="file" label="Choose File" onchange={handleFileChange}></lightning-input>
+            <lightning-button label="Upload File" onclick={uploadFile} disabled={isUploadDisabled}></lightning-button>
+            <lightning-button label="Fetch Files" onclick={fetchFiles}></lightning-button>
+            <template if:true={files.length}>
+                <ul>
+                    <template for:each={files} for:item="file">
+                        <li key={file.id}>
+                            {file.name} - <a href={file.url} target="_blank">Download</a>
+                            <lightning-button label="Delete" onclick={handleDelete} data-id={file.id} style="margin-left: 10px;"></lightning-button>
+                        </li>
+                    </template>
+                </ul>
+            </template>
+        </div>
+    </lightning-card>
+</template>

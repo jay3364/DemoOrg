@@ -1,0 +1,74 @@
+<aura:component controller="Tassk3Aura" implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId" access="global">
+    <aura:attribute name="searchKey1" type="String"/>
+    <aura:attribute name="searchKey2" type="String"/>
+    <aura:attribute name="accountsSection1" type="List"/>
+    <aura:attribute name="accountsSection2" type="List"/>
+    <aura:attribute name="contactsSection1" type="List"/>
+    <aura:attribute name="contactsSection2" type="List"/>
+    <aura:attribute name="toAccountId1" type="String"/>
+    <aura:attribute name="toAccountId2" type="String"/>
+    <aura:attribute name="contactCount1" type="Integer" default="0"/>
+    <aura:attribute name="contactCount2" type="Integer" default="0"/>
+    <aura:attribute name="accountColumns" type="List" default="[{label: 'Account Name', fieldName: 'Name', type: 'text'}]"/>
+    <aura:attribute name="contactColumns" type="List" default="[{label: 'Contact Name', fieldName: 'Name', type: 'text'}]"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+   
+    <div class="main" style="display: flex;">
+        
+        <div class="section section1" ondrop="{!c.handleDrop}" ondragover="{!c.handleDragOver}" data-section="1" style="display: flex;width: 40%;">
+            <header>Section 1</header>
+            <lightning:layout multipleRows="true">
+                <lightning:layoutItem size="12">
+                    <lightning:input name="search1" label="Search Account" value="{!v.searchKey1}" onchange="{!c.handleSearch1}"/>
+                    <div class="account-list">
+                        <aura:iteration items="{!v.accountsSection1}" var="account">
+                            <lightning:button class="button" label="{!account.Name}" onclick="{!c.getContact}" value="{!account.Id}" variant="base"  />
+                        </aura:iteration>
+                    </div>
+                </lightning:layoutItem>
+
+                <lightning:layoutItem size="12">
+                    <div class="contact-list">
+                        <aura:iteration items="{!v.contactsSection1}" var="contact">
+                            <lightning:card class="contact-card">
+                                <div draggable="true" ondragstart="{!c.handleDragStart}" data-contactid="{!contact.Id}">
+                                    <p>{!contact.Name}</p>
+                                </div>
+                            </lightning:card>
+                        </aura:iteration>
+                    </div>
+                    <p>Contact Count: {!v.contactCount1}</p>
+                </lightning:layoutItem>
+            </lightning:layout>
+        </div>
+
+        <div class="section section2" ondrop="{!c.handleDrop}" ondragover="{!c.handleDragOver}" data-section="2" style="display: flex;width: 40%;">
+            <header>Section 2</header>
+            <lightning:layout multipleRows="true">
+                <lightning:layoutItem size="12">
+                    <lightning:input name="search2" label="Search Account" value="{!v.searchKey2}" onchange="{!c.handleSearch2}"/>
+                    <div class="account-list">
+                        <aura:iteration items="{!v.accountsSection2}" var="account">
+                            <lightning:button label="{!account.Name}" onclick="{!c.getContact}" value="{!account.Id}" variant="base"/>
+                        </aura:iteration>
+                    </div>
+                </lightning:layoutItem>
+
+                <lightning:layoutItem size="12">
+                    <div class="contact-list">
+                        <aura:iteration items="{!v.contactsSection2}" var="contact">
+                            <lightning:card class="contact-card">
+                                <div draggable="true" ondragstart="{!c.handleDragStart}" data-contactid="{!contact.Id}">
+                                    <p>{!contact.Name}</p>
+                                </div>
+                            </lightning:card>
+                        </aura:iteration>
+                    </div>
+                    <p>Contact Count: {!v.contactCount2}</p>
+                </lightning:layoutItem>
+            </lightning:layout>
+        </div>
+    </div>
+</aura:component>

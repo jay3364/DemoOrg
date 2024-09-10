@@ -1,0 +1,56 @@
+<aura:component controller="Task4Aura" implements="flexipage:availableForRecordHome,force:hasRecordId" access="global">
+    <aura:attribute name="steps" type="List"/>
+    <aura:attribute name="account" type="Account" default="{'sobjectType': 'Account'}"/>
+    <aura:attribute name="contact" type="Contact" default="{'sobjectType': 'Contact'}"/>
+    <aura:attribute name="event" type="Event" default="{'sobjectType': 'Event'}"/>
+    <aura:attribute name="currentStep" type="String" default=""/>
+    <aura:attribute name="lastCreatedAccountId" type="String"/>
+    <aura:attribute name="lastCreatedContactId" type="String"/>
+
+    <aura:attribute name="contactList" type="Contact[]"/>
+    <aura:attribute name="columns" type="list"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.Init}"/>
+
+    <lightning:progressIndicator currentStep="{!v.currentStep}" type="path" variant="base">
+        <aura:iteration items="{!v.steps}" var="step">
+            <lightning:progressStep label="{!step.label}" value="{!step.value}" onclick="{!c.handleStepClick}"/>
+        </aura:iteration>
+    </lightning:progressIndicator>
+
+    <aura:if isTrue="{!v.currentStep == 'Account'}">
+        <lightning:card title="Create New Account">
+            <div class="slds-p-around_medium">
+                
+                <lightning:input aura:id="accountName" label="Account Name" value="{!v.account.Name}" required="true"/>
+                <lightning:input type="tel"  aura:id="accountPhone" label="Phone" value="{!v.account.Phone}"/>
+                <lightning:input aura:id="accountWebsite" label="Website" value="{!v.account.Website}"/>
+                <lightning:button label="Previous" onclick="{!c.nextStep}" disabled="true" class="slds-m-top_medium "/>
+                <lightning:button label="Next" onclick="{!c.nextStep}" class="slds-m-top_medium nextbutton"/>
+            </div>
+        </lightning:card>
+    </aura:if>
+
+    <aura:if isTrue="{!v.currentStep == 'Contact'}">
+        <lightning:card title="Create New Contact">
+            <div class="slds-p-around_medium">
+                <lightning:input aura:id="contactFirstName" label="First Name" value="{!v.contact.FirstName}" required="true"/>
+                <lightning:input aura:id="contactLastName" label="Last Name" value="{!v.contact.LastName}" required="true"/>
+                <lightning:input aura:id="contactEmail" label="Email" value="{!v.contact.Email}"/>
+                <lightning:button label="Previous" onclick="{!c.previousStep}" class="slds-m-top_medium "/>
+                <lightning:button label="Next" onclick="{!c.lastStep}" class="slds-m-top_medium nextbutton"/>
+            </div>
+        </lightning:card>
+    </aura:if>
+
+    <aura:if isTrue="{!v.currentStep == 'Event'}">
+        <lightning:card title="Event Creation">
+            <div class="slds-p-around_medium">
+                <lightning:input type="datetime" aura:id="startDate" label="Start Date" value="{!v.event.StartDateTime}" required="true"/>
+                <lightning:input type="datetime" aura:id="enddate" label="End Date" value="{!v.event.EndDateTime}" required="true"/>
+                <lightning:button label="Previous" onclick="{!c.previousStep}" class="slds-m-top_medium "/>
+                <lightning:button label="Save" onclick="{!c.SaveRecord}" class="slds-m-top_medium nextbutton"/>
+            </div>
+        </lightning:card>
+    </aura:if>
+</aura:component>

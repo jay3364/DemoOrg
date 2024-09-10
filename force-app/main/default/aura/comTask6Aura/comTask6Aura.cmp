@@ -1,0 +1,12 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+	
+    <aura:attribute name="homeUrl" type="String" default="/"/>
+    <aura:attribute name="profileUrl" type="String" default="/profile"/>
+    <aura:attribute name="logoutUrl" type="String" default="/secur/logout.jsp"/>
+
+    <div class="custom-navigation">
+        <lightning:button label="Home" onclick="{!c.navigateHome}" variant="neutral"/>
+        <lightning:button label="My Profile" onclick="{!c.navigateProfile}" variant="neutral"/>
+        <lightning:button label="Logout" onclick="{!c.navigateLogout}" variant="neutral"/>
+    </div>
+</aura:component>

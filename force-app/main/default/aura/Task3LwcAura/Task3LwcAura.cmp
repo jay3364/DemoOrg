@@ -1,0 +1,4 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+	 <lightning:button label="Click Me" onclick="{!c.myAction}"/>
+    
+</aura:component>

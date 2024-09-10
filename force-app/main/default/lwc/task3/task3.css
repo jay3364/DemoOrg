@@ -1,0 +1,23 @@
+/* fileUploader.css */
+.file-list {
+    list-style-type: none;
+    padding: 0;
+	margin-left: 20px;
+}
+lightning-input{
+	margin-left: 20px;
+}
+.file-list li {
+    margin-bottom: 10px;
+}
+
+.pagination {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination lightning-button {
+    margin: 0 5px;
+}

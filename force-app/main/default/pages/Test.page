@@ -1,0 +1,25 @@
+<apex:page controller="Data">
+<apex:includeLightning />   
+<apex:slds /> 
+<div id="LwcId" />
+<script>
+        $Lightning.use("c:TestApp", function() {
+        $Lightning.createComponent("c:privateApp",
+        {
+            note   : 'I am coming from VF Page', // You can pass the value to @api attributes if you have inside JavaScript Class.
+            recordId : '{!$CurrentPage.parameters.id}'
+        },
+        "LwcId", // the Id of div tag where your component will be rendered
+        function(cmp) {
+            console.log('Calling the LWC Component');
+        });
+    });
+</script>
+<!-- Begin Default Content REMOVE THIS -->
+<h1>Congratulations</h1>
+This is your new Page
+<!-- End Default Content REMOVE THIS -->
+
+
+
+</apex:page>

@@ -1,0 +1,33 @@
+<apex:page controller="Task2VFpagination">
+    <apex:form >
+        <apex:pageBlock title="List of Accounts">
+            <apex:pageBlockTable value="{!listAcc}" var="acc">
+                <apex:column headerValue="Account Name">
+                    <apex:commandLink value="{!acc.Name}" action="{!selectAccount}">
+                        <apex:param name="accountId" value="{!acc.Id}" assignTo="{!selectedAccountId}" />
+                    </apex:commandLink>
+                </apex:column>
+                <apex:column value="{!acc.Phone}" headerValue="Phone"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+
+        <apex:outputPanel rendered="{!NOT(ISNULL(selectedAccountId))}">
+            <apex:pageBlock title="List of Opportunities" id="oppTableBlock">
+                <apex:pageBlockTable value="{!listOpp}" var="opp" id="oppTable">
+                    <apex:column value="{!opp.Name}" headerValue="Opportunity Name"/>
+                </apex:pageBlockTable>
+            </apex:pageBlock>
+
+            <apex:pageBlock title="Pagination" id="paginationBlock">
+                <apex:pageBlockButtons location="bottom">
+                    <apex:commandButton action="{!previousPage}" value="Previous" rerender="oppTableBlock, oppNavigation" disabled="{!oppPageNumber = 1}"/>
+                    <apex:commandButton action="{!nextPage}" value="Next" rerender="oppTableBlock, oppNavigation" disabled="{!oppPageNumber >= (totalOppRecords + oppPageSize - 1) / oppPageSize}"/>
+                </apex:pageBlockButtons>
+            </apex:pageBlock>
+
+            <apex:outputPanel id="oppNavigation">
+                <apex:outputText value="Page {!oppPageNumber} of {!CEILING(totalOppRecords / oppPageSize)}"/>
+            </apex:outputPanel>
+        </apex:outputPanel>
+    </apex:form>
+</apex:page>

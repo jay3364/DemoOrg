@@ -1,0 +1,29 @@
+.THIS .horizontal-layout {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+
+.THIS .section {
+    flex: 1;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #975353;
+    border-radius: 5px;
+}
+
+.THIS .button{
+    width: 100%;
+}
+
+.THIS .account-list, .THIS .contact-list {
+    margin-top: 10px;
+}
+
+.THIS .contact-card {
+    margin: 5px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}

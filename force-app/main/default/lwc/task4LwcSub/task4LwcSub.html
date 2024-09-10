@@ -1,0 +1,27 @@
+<template>
+    <lightning-card variant="Narrow" title="Account Details" icon-name="standard:account">
+        <template if:true={contacts}>
+            <lightning-card  variant="Narrow"  title="CONTACT" icon-name="standard:account">
+                
+            <lightning-datatable
+                key-field="Id"
+                data={contacts}
+                hide-checkbox-column
+                columns={contactColumns}>
+            </lightning-datatable>
+            </lightning-card>
+        </template>
+        <template if:true={opportunities}>
+
+            <lightning-card  variant="Narrow"  title="OPPORTUNITY" icon-name="standard:account">
+               
+            <lightning-datatable
+                key-field="Id"
+                data={opportunities}
+                hide-checkbox-column
+                columns={opportunityColumns}>
+            </lightning-datatable>
+            </lightning-card>
+        </template>
+    </lightning-card>
+</template>

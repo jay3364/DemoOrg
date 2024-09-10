@@ -1,0 +1,156 @@
+<template>
+    <div class="slds-container slds-box slds-box_xx-small">
+        <div class="slds-text-align_center slds-m-bottom_medium">
+            <h1><span class="builder">BUILDER</span> <span class="tek">TEK</span></h1>
+        </div>
+        <div class="slds-text-align_center slds-m-bottom_medium">
+            <h1>RFQ: BT Flow Test 1.0</h1>
+        </div>
+        <div class="slds-box slds-box_xx-small slds-border_top slds-border_bottom slds-m-bottom_medium border">
+            <div class="slds-text-heading_small slds-m-bottom_small slds-border_bottom slds-p-bottom_small">
+                RFQ Detail
+            </div>
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-size_1-of-2 slds-p-around_medium">
+                    <div class="slds-form slds-form_stacked">
+                        <div class="slds-form_element slds-m-bottom_small">
+                            <label class="slds-form_label" for="projectName">Project Name:</label>
+                            
+                                <span  class="slds-text_body">Mass Transaction</span>
+                            
+                        </div>
+                        <div class="slds-form_element slds-m-bottom_small">
+                            <label class="slds-form_label" for="rfqDescription">RFQ Descriptions:</label>
+                            
+                                <span class="slds-text_body">BT flow Test 1.0</span>
+                            
+                        </div>
+                        <div class="slds-form_element slds-m-bottom_small">
+                            <label class="slds-form_label" for="rfqDetails">RFQ Details:</label>
+                            
+                                <span class="slds-text_body" id="rfqDetails"></span>
+
+                        </div>
+                        <div class="slds-form_element slds-m-bottom_small">
+                            <label class="slds-form_label" for="startDate">Artificial Start Date:</label>
+                            <div class="slds-form_element slds-size_1-of-1">
+                                <input class="slds-input" type="date" name="Start Date" id="startDate">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-2 slds-p-around_medium">
+                    <div class="slds-form slds-form_stacked">
+                        <div class="slds-form_element slds-m-bottom_small">
+                            <label class="slds-form_label" for="name">Name:</label>
+                            
+                                <span class="slds-text_heading_medium" id="name">Test</span>
+                            
+                        </div>
+                        <div class="slds-form_element slds-m-bottom_small">
+                            <label class="slds-form_label" for="rfqDueDate">RFQ Due Date:</label>
+                           
+                                <input class="slds-input" type="date" name="Due Date" id="rfqDueDate">
+                          
+                        </div>
+                        <div class="slds-form_element slds-m-bottom_small">
+                            <label class="slds-form_label" for="notes">Notes:</label>
+                           
+                                <textarea class="slds-textarea" name="Notes" id="notes"></textarea>
+                            
+                        </div>
+                        <div class="slds-form_element slds-m-bottom_small">
+                            <label class="slds-form_label" for="finishedDate">Anticipated Finished Date:</label>
+                           
+                                <input class="slds-input" type="date" name="Finished Date" id="finishedDate">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-m-top_medium">
+                <lightning-button name="RFQ Button" variant="brand" label="RFQ Button" class="slds-button slds-button_brand" onclick={handleClick}></lightning-button>
+            </div>
+            <!-- Datatable -->
+            <div class="slds-p-horizontal_medium">
+                <lightning-datatable
+                    key-field="id"
+                    data={data}
+                    columns={columns}
+                    onrowaction={handleRowAction}
+                    hide-checkbox-column>
+                </lightning-datatable>
+                <lightning-button label="Add More" onclick={handleAddRow}></lightning-button>
+                <lightning-button label="Save" onclick={handleSave} variant="brand"></lightning-button>
+            </div>                
+            </div>
+
+
+           
+            <!-- Related Document Section -->
+            <div class="slds-box slds-box_xx-small slds-border_top slds-border_bottom slds-m-top_medium">
+                <div class="slds-m-bottom_small">
+                    <lightning-button variant="brand" label="Related Document" class="slds-button slds-button_brand" onclick={handleUploadDocuments}></lightning-button>
+                </div>
+                <div class="slds-box slds-box_xx-small slds-border slds-m-bottom_medium">
+                    <div class="slds-drag-drop slds-text-align_center">
+                        <textarea class="slds-textarea slds-p-around_medium" placeholder="Drag and drop files here or click to browse files" onchange={handleFileSelect}></textarea>
+                        <input type="file" multiple onchange={handleFileSelect} style="display:none;" />
+                    </div>
+                    <table class="slds-table slds-table_bordered slds-table_fixed slds-table_resizable slds-m-top_medium">
+                        <thead>
+                            <tr>
+                                <th>FILE NAME</th>
+                                <th>DOWNLOAD LINK</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template if:true={files}>
+                                <template for:each={files} for:item="file">
+                                    <tr key={file.Id}>
+                                        <td>{file.Title}</td>
+                                        <td><a href={file.ContentDownloadUrl} target="_blank">{file.Title}</a></td>
+                                        <td><lightning-button variant="base" label="Delete" onclick={handleFileDelete} data-id={file.Id}></lightning-button></td>
+                                    </tr>
+                                </template>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- Vendor Document Section -->
+            <div class="slds-box slds-box_xx-small slds-border_top slds-border_bottom slds-m-top_medium">
+                <div class="slds-m-bottom_small">
+                    <lightning-button variant="brand" label="Vendor Document" class="slds-button slds-button_brand" onclick={handleUploadDocuments}></lightning-button>
+                </div>
+                <div class="slds-box slds-box_xx-small slds-border slds-m-bottom_medium">
+                    <div class="slds-drag-drop slds-text-align_center">
+                        <textarea class="slds-textarea slds-p-around_medium" placeholder="Drag and drop files here or click to browse files" onchange={handleFileSelect}></textarea>
+                        <input type="file" multiple onchange={handleFileSelect} style="display:none;" />
+                    </div>
+                    <table class="slds-table slds-table_bordered slds-table_fixed slds-table_resizable slds-m-top_medium">
+                        <thead>
+                            <tr>
+                                <th>FILE NAME</th>
+                                <th>DOWNLOAD LINK</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template if:true={vendorFiles}>
+                                <template for:each={vendorFiles} for:item="file">
+                                    <tr key={file.Id}>
+                                        <td>{file.Title}</td>
+                                        <td><a href={file.ContentDownloadUrl} target="_blank">{file.Title}</a></td>
+                                        <td><lightning-button variant="base" label="Delete" onclick={handleFileDelete} data-id={file.Id}></lightning-button></td>
+                                    </tr>
+                                </template>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

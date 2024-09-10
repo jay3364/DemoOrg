@@ -1,0 +1,20 @@
+<template>
+    <lightning-input
+        data-id="objectId" 
+        type="text"
+        label="Enter Object"
+    ></lightning-input>
+    <lightning-button 
+        variant="base"
+        label="Search" 
+        onclick={handleClick} 
+    ></lightning-button>
+
+    <template if:true={requiredFields}>
+        <ul>
+            <template for:each={requiredFields} for:item="field">
+                <li key = {field}>{field}</li>
+            </template>
+        </ul>
+    </template>
+</template>

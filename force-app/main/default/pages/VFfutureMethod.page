@@ -1,0 +1,8 @@
+<apex:page standardController="Opportunity" extensions="OpportunityController">
+    <apex:form >
+        <apex:commandButton value="Add Random Image" action="{!addRandomImage}" rerender="output"/>
+        <apex:outputPanel id="output">
+            <apex:pageMessages />
+        </apex:outputPanel>
+    </apex:form>
+</apex:page>

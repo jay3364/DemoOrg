@@ -1,0 +1,23 @@
+<template>
+    <!-- <lightning-layout>
+        <lightning-layout-item size="12">
+          
+             <c-com-task1></c-com-task1>
+        </lightning-layout-item>
+        <lightning-layout-item size="12">
+            <c-com-task2></c-com-task2>
+        </lightning-layout-item>
+        <lightning-layout-item size="12">
+            <slot></slot>
+        </lightning-layout-item>
+        <lightning-layout-item size="12">
+           <c-com-task3></c-com-task3>
+        </lightning-layout-item>
+    </lightning-layout> -->
+
+    <div class="custom-navigation">
+        <lightning-button label="Home" onclick={navigateHome} variant="neutral"></lightning-button>
+        <lightning-button label="My Profile" onclick={navigateProfile} variant="neutral"></lightning-button>
+        <lightning-button label="Logout" onclick={navigateLogout} variant="neutral"></lightning-button>
+    </div>
+</template>

@@ -1,0 +1,23 @@
+<template>
+    <lightning-button label="Refresh" onclick={handleRefresh}></lightning-button>
+    <h2>Main Grid</h2>
+    <!-- <table>
+        <template for:each={grid} for:item="row">
+            <tr key={row.rowId}>
+                <template for:each={row.cells} for:item="cell">
+                    <td key={cell.cellId} style={cell.style}>dd</td>
+                </template>
+            </tr>
+        </template>
+    </table> -->
+    <h2>Intersection Grid</h2>
+    <table>
+        <template for:each={intersectionGrid} for:item="row">
+            <tr key={row.rowId}>
+                <template for:each={row.cells} for:item="cell">
+                    <td key={cell.cellId} style={cell.style}>jjd</td>
+                </template>
+            </tr>
+        </template>
+    </table>
+</template>

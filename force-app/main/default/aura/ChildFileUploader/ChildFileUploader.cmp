@@ -1,0 +1,17 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global">
+
+    <!-- <aura:attribute name="enteredText" type="String"/>
+    
+
+    <div class="slds-box slds-p-around_medium">
+    <h2>This is Child Component</h2>
+    <lightning:input label="Enter Name" aura:id="name" value ="{!v.enteredText}" />
+    <lightning:button class="slds-m-top_small" variant="brand" label="Pass Value To Parent" title="Click Here" onclick="{!c.handleClick }"/>
+</div> -->
+
+<!-- <aura:attribute name="file" type="Blob"/> -->
+<aura:registerEvent name="sampleComponentEvent" type="c:childEvent"/>
+    <aura:attribute name="file" type="String"/>
+    
+    <input type="file" aura:id="fileUpload" onchange="{!c.handleFileChange}"/>
+</aura:component>

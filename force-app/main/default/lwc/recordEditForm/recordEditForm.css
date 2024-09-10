@@ -1,0 +1,21 @@
+.custom-spinner-container {
+    height: 200px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(71, 224, 83);
+    color: red;
+}
+
+.custom-spinner {
+    opacity: 0.6; /* Reduce opacity to make it look lighter */
+    animation: custom-spin 1s linear infinite; /* Custom animation */
+    color: rgb(224, 10, 10);
+    background: gray;
+}
+
+@keyframes custom-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

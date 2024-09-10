@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Oops! Page Not Found" icon-name="utility:error">
+        <div class="slds-p-around_medium">
+            <h1 class="slds-text-heading_large">404</h1>
+            <p class="slds-text-body_regular">
+                <img src={imageUrl}>
+                Sorry, the page you are looking for 
+            </p>
+            <p class="slds-text-body_regular">
+                You can go back to the <a href="/">home page</a> or contact <a href="mailto:support@example.com">support</a> for assistance.
+            </p>
+            <lightning-button variant="neutral" label="Go Home" onclick={handleGoHome}></lightning-button>
+        </div>
+    </lightning-card>
+</template>

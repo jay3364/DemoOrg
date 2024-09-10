@@ -1,0 +1,19 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+       <!-- <aura:dependency resource="c:privateApp" type="COMPONENT" />
+    <c:privateApp /> -->
+    <aura:attribute name="imageUrl" type="String" default=""/>
+    <aura:attribute name="backgroundColor" type="String" default=""/>
+    <aura:attribute name="description" type="String" default="description"/>
+    <aura:attribute name="fontSize" type="String" default=""/>
+    <aura:attribute name="fontColor" type="String" default=""/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <div style="{! 'background-color:' + v.backgroundColor }">
+        <img src="{! v.imageUrl }" alt="Image" style="max-width: 100%;"/>
+        <p style="{! 'color:' + v.fontColor + '; font-size:' + v.fontSize + ';' }">
+            {! v.description }
+        </p>
+    </div>
+
+
+</aura:component>

@@ -1,0 +1,53 @@
+<template>
+    <lightning-progress-indicator type="path" current-step={currentStep} has-error="true" variant="base">
+        <template for:each={steps} for:item="step">
+            <lightning-progress-step label={step.label} value={step.value} key={step.label} onclick={handleSteps}></lightning-progress-step>
+        </template>       
+    </lightning-progress-indicator>
+
+    <template lwc:if={step1}>
+        <lightning-combobox
+            name="Object"
+            label="Object Select"
+            value={value}
+            placeholder="Select Progress"
+            options={options}
+            onchange={handleChange} 
+            ></lightning-combobox>
+            
+           
+        <template if:true={data.length}>
+            <lightning-datatable
+                key-field="Id"
+                data={data}
+                columns={columns}
+                onrowselection={getSelectedName}
+            ></lightning-datatable>
+        </template>
+
+        <lightning-button label="Previous" onclick={previousStep} disabled={disable}></lightning-button>
+        <lightning-button label="Next" onclick={nextStep} style="padding-left: 80%;"></lightning-button>
+    </template> 
+
+    <template lwc:if={step2}>
+        <lightning-input label="Email Subject" value={emailSubject} onchange={handleEmailSubjectChange}></lightning-input>
+        <lightning-input label="To (Email Recipient)" value={emailRecipient} onchange={handleEmailRecipientChange}></lightning-input>
+        <lightning-textarea label="Email Body" value={emailBody} onchange={handleEmailBodyChange}></lightning-textarea>
+
+        <lightning-button label="Previous" onclick={previousStep} disabled={disable}></lightning-button>
+        <lightning-button label="Next" onclick={nextStep} style="padding-left: 80%;"></lightning-button>
+    </template> 
+
+    <template lwc:if={step3}>
+        <lightning-card title="Email Preview">
+            <div class="slds-var-p-around_medium">
+                <p><strong>Subject:</strong> {emailSubject}</p>
+                <p><strong>Recipient:</strong> {emailRecipient}</p>
+                <p><strong>Body:</strong></p>
+                <p>{emailBody}</p>
+            </div>
+        </lightning-card>
+        <lightning-button label="Previous" onclick={previousStep} disabled={disable}></lightning-button>
+        <lightning-button label="Send" onclick={saveData} style="padding-left: 80%;"></lightning-button>
+    </template>
+</template>

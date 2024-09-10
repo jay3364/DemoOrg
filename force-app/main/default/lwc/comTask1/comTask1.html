@@ -1,0 +1,25 @@
+<template>
+    <lightning-card title="Registration Form">
+        <div class="slds-m-around_medium">
+            <lightning-combobox name="role" label="Select Role" value={selectedRole} placeholder="Select Role"
+                                options={roleOptions} onchange={handleRoleChange}>
+            </lightning-combobox>
+            
+            <template if:true={isTeacher}>
+                <lightning-input name="teacherName" label="Teacher Name" value={teacherName} onchange={handleInputChange}></lightning-input>
+                <lightning-input name="teacherEmail" label="Teacher Email" value={teacherEmail} onchange={handleInputChange}></lightning-input>
+            </template>
+
+            <template if:true={isStudent}>
+                <lightning-input name="studentName" label="Student Name" value={studentName} onchange={handleInputChange}></lightning-input>
+                <lightning-input name="studentEmail" label="Student Email" value={studentEmail} onchange={handleInputChange}></lightning-input>
+            </template>
+
+            <lightning-button variant="brand" label="Register" onclick={handleRegister}></lightning-button>
+        </div>
+
+        <div>
+            <lightning-button label="Go to Login Page" onclick={handleRedirect}></lightning-button>
+        </div>
+    </lightning-card>
+</template>

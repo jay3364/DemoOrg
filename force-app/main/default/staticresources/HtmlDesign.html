@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Form</title>
+   
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto');
+
+* {
+    margin:0;
+    font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
+}
+
+html, body {
+    height:100%; 
+     
+}
+
+#registration-page {
+    height:100%;
+    background:#78a7ba; 
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    overflow:scroll;
+}
+
+.signup-form  {
+    flex:1;
+    max-width:600px;
+    border-radius: 10px;
+    background-color: #EFF0F1;
+    border: 1px solid #999;
+    margin-top: auto;
+    margin-bottom:  auto;
+  }
+  
+
+.form-header {
+    padding:15px 0;
+    border-bottom:1px solid #cccccc;
+}
+
+.form-header h1 {
+    font-size: 28px;
+    text-align:center;
+    color:#666;
+}
+
+
+.form-body {
+    background:white;
+    padding:5px 10px;
+}
+
+.row {
+    display:flex; 
+}
+  
+.input-group {
+    flex:1;  
+    display:flex;
+    flex-direction:column; 
+    margin:10px 5px;
+}
+
+
+.radio-group, .checkbox-group {
+    display:flex;
+  }
+  
+  .radio-group div, .checkbox-group div {
+    flex:1;
+  }
+  
+  .radio-group label, .checkbox-group label  {
+    color:#666;
+    cursor:pointer;
+  }
+
+  .range-group {
+    display:flex;
+  }
+
+  .range-group input {
+      flex:1;
+  }
+
+  .range-group label {
+    margin-left:10px;
+    background-color: #1BBA93;
+    color:white;
+    border-radius: 5px;
+    padding:5px;
+    font-size:17px;
+    text-align:center;
+  }
+
+
+@media only screen and (max-width: 500px) {
+    .row{
+      flex-direction:column; 
+    }
+
+    .btn {
+        flex:1;
+    }
+}
+
+
+
+.form-footer {
+    display:flex;
+    justify-content: flex-end;
+    padding:10px;
+}
+
+.btn {
+    padding:10px 20px;
+    background-color: #1BBA93;
+    font-size:17px;
+    border:none;
+    border-radius:5px;
+    color:#bcf5e7;
+    cursor:pointer;
+ }
+
+ 
+
+ label {
+  color:#1BBA93;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+input[type="text"],
+input[type="email"] ,
+input[type="password"],
+input[type="file"],
+input[type="number"],
+select,
+textarea  {
+width:100%;
+
+font-size: 18px;
+height: 34px;
+padding-left: 10px;
+padding-right: 10px;
+color: #666;
+border: 1px solid #d6d6d6;
+border-radius: 4px;
+background: white;
+outline: none;
+}
+
+input[type="file"]{
+    border: none;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+textarea {
+  resize: none;
+  height:100px;
+}
+    </style>
+</head>
+
+<body>
+    <section id="registration-page">
+        <form class="signup-form" action="#">
+            
+            <div class="form-header">
+                <h1>Create Account</h1>
+            </div>
+            
+            <div class="form-body">
+               
+                <div class="row">
+                    <div class="input-group">
+                        <label >First name * </label>
+                        <input type="text" placeholder="Enter your first name" id="firstnameId" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Last name</label>
+                        <input type="text"  placeholder="Enter your last name" id="SecondnameId">
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="input-group">
+                        <label>Email *</label>
+                        <input type="email" placeholder="Enter your email address" id="emailid" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-group">
+                        <label>Password *</label>
+                        <input type="password" id="password" placeholder="Enter your your password" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Confirm Password</label>
+                        <input type="password" id="confirmPassword" placeholder="Enter your password again" required>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="input-group">
+                        <label>Gender </label>
+
+                        <div class="radio-group">
+
+                            <div>
+                                <label for="male">
+                                    <input type="radio" name="gender" id="male">
+                                    Male
+                                </label>
+                            </div>
+
+                            <div>
+                                <label for="female">
+                                    <input type="radio" name="gender" id="female">
+                                    Female
+                                </label>
+                            </div>
+
+                            <div>
+                                <label for="other">
+                                    <input type="radio" name="gender" id="other"> Other
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Hobbies</label>
+                        <div class="checkbox-group">
+                            <div>
+                                <label for="music">
+                                    <input type="checkbox" name="hobbies" id="music">
+                                    Music
+                                </label>
+                            </div>
+
+                            <div>
+                                <label for="cooking">
+                                    <input type="checkbox" name="cooking" id="cooking">
+                                    Cook
+                                </label>
+                            </div>
+
+                            <div>
+                                <label for="travel">
+                                    <input type="checkbox" name="travel" id="travel">
+                                    Travel
+                                </label>
+                            </div>
+
+                            <div>
+                                <label for="movies">
+                                    <input type="checkbox" name="movies" id="movies">
+                                    Movie
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="row">
+                    <div class="input-group">
+                        <label for="">Source of Income</label>
+                        <select name="" id="">
+                            <option>Employed</option>
+                            <option>Self-Employed</option>
+                            <option>Unemployed</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Income</label>
+                        <div class="range-group">
+                            <input type="range" id="pi_input" min="20" max="200" step="5"
+                                value="20">
+                            <label id="rangeSliderLabel">20 K</label>
+                        </div>
+                    </div>
+                </div>
+              
+                <div class="row">
+                    <div class="input-group">
+                        <label>Upload Profile Picture</label>
+                        <input type="file">
+                    </div>
+                    <div class="input-group">
+                        <label>Age</label>
+                        <input type="number">
+                    </div>
+                </div>
+
+             
+                <div class="row">
+                    <div class="input-group">
+                        <label for="">Bio</label>
+                        <textarea> </textarea>
+                    </div>
+                </div>
+            </div>
+          
+            <div class="form-footer">
+                <p class="message"></p>
+                <button class="btn" type="submit" onclick={submit}>Create</button>
+
+            </div>
+        </form>
+    </section>
+    
+    
+    <script type="module">
+       function submit() {
+        console.log("submit");
+       }
+       const value = document.querySelector("#rangeSliderLabel");
+        const input = document.querySelector("#pi_input");
+        value.textContent = input.value;
+        input.addEventListener("input", (event) => {
+        value.textContent = event.target.value;
+        });
+   
+     // Password validation
+     document.querySelector('.signup-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var password = document.querySelector('#password').value;
+            var confirmPassword = document.querySelector('#confirmPassword').value;
+            const message = document.querySelector('.message');
+
+            if (password !== confirmPassword) {
+                message.textContent = 'Passwords do not match';
+            } else if (password.length < 8) {
+                message.textContent = 'Password length should be at least 8 characters';
+            } else if (!/\d/.test(password)) {
+                message.textContent = 'Password should contain at least one digit';
+            } else if (!/[A-Z]/.test(password)) {
+                message.textContent = 'Password should contain at least one uppercase letter';
+            } else if (!/[a-z]/.test(password)) {
+                message.textContent = 'Password should contain at least one lowercase letter';
+            } else if (!/[!@#$%^&*()\-_=+{};:,<.>]/.test(password)) {
+                message.textContent = 'Password should contain at least one special character';
+            } else {
+                message.textContent = 'Password is valid';
+            }
+        });
+    
+
+         // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+  import { getDatabase, ref,set,get, child, push} from "https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js";
+  //import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-analytics.js";
+  
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyA8ly8sIJGRpGa6RQdKYoL0PWrDpyd0FGU",
+    authDomain: "contactform-8af75.firebaseapp.com",
+    databaseURL: "https://contactform-8af75-default-rtdb.firebaseio.com",
+    projectId: "contactform-8af75",
+    storageBucket: "contactform-8af75.appspot.com",
+    messagingSenderId: "492902630172",
+    appId: "1:492902630172:web:17ead2a04dfe1e4234b0d9",
+    measurementId: "G-F8WH2793XH"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+
+//   document.getElementById('submit').addEventListener('click',function(e){
+//     e.preventDefault();
+//     set(ref(db,'user/' + document.getElementById('firstnameId').value,{
+//         username : document.getElementById('firstnameId').value,
+//         Email : document.getElementById('emailid').value
+
+//     }));
+
+//     alert("login succeessfull...");
+//   });
+//   //const analytics = getAnalytics(app);
+
+document.addEventListener("DOMContentLoaded", function() {
+       
+
+       
+        document.querySelector('.signup-form').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            // Get form input values
+            var firstname = document.querySelector('#firstnameId').value;
+            var email = document.querySelector('#emailid').value;
+
+            
+            const dbRef = ref(db, 'user');
+            const newPostRef = push(dbRef);
+            set(newPostRef, {
+                username: firstname,
+                Email: email
+            });
+
+            alert("Data saved successfully!");
+        });
+    });
+
+
+  
+    </script>
+
+</body>
+
+</html>

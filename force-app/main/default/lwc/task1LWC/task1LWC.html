@@ -1,0 +1,11 @@
+<template>
+  <lightning-card title="Task1">
+  <div style="display: flex; flex-direction: column; align-items: left;">
+    <lightning-input class="lastName" type="text" label="Last Name" required="true"></lightning-input><br>
+    <lightning-input class="firstName" type="text" label="First Name" required="true"></lightning-input><br>
+    <lightning-input class="salutate" type="text" label="Salutation" required="true"></lightning-input><br>
+    <lightning-input class="email" type="email" label="Email Id" required="true"></lightning-input><br>
+  </div>
+  <lightning-button variant="success" label="Create" onclick={handleClick}></lightning-button>
+</lightning-card>
+</template>

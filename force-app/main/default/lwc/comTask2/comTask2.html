@@ -1,0 +1,41 @@
+<template>
+    <lightning-card title="Community Login">
+        <div class="slds-p-around_medium">
+            <lightning-radio-group 
+                name="userType" 
+                label="I am a" 
+                options={userTypeOptions} 
+                value={selectedUserType} 
+                onchange={handleUserTypeChange}>
+            </lightning-radio-group>
+
+            <lightning-input 
+                label="Username" 
+                value={username} 
+                onchange={handleInputChange} 
+                data-id="username">
+            </lightning-input>
+
+            <lightning-input 
+                label="Password" 
+                type="password" 
+                value={password} 
+                onchange={handleInputChange} 
+                data-id="password">
+            </lightning-input>
+
+            <lightning-button 
+                variant="brand" 
+                label="Login" 
+                onclick={handleLogin}>
+            </lightning-button>
+
+            <lightning-button
+                variant="brand" 
+                label="forget password" 
+                onclick={forgetPassword}>
+
+            </lightning-button>
+        </div>
+    </lightning-card>
+</template>
