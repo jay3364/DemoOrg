@@ -1,0 +1,58 @@
+.portfolio-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 2rem;
+    background: #f4f6f9;
+    border-radius: 8px;
+}
+
+.header-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.salesforce-logo {
+    max-width: 20px;
+    height: auto;
+}
+
+.profile-photo {
+    border: 2px solid #0070d2;
+    border-radius: 50%;
+}
+
+.highlight-title {
+    color: #0070d2;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+    color: #555;
+}
+
+.skills-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.skills-list li {
+    background: hwb(219 85% 10%);
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.slds-card__body{
+    padding-left: 30px;
+}
